@@ -1,5 +1,6 @@
 ﻿namespace NestorRoca.TechnicalTest.PolicyManagement.Api.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
@@ -10,7 +11,7 @@
     using System.Threading.Tasks;
 
     [ApiController]
-    //[Authorize(Roles = "Administrador")]
+    [Authorize(Roles = "Administrador")]
     public class PolicyController : ControllerBase
     {
         public IPolicyBussiness PolicyBussiness;
