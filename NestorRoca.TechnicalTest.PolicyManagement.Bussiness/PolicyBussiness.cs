@@ -35,7 +35,7 @@
         {
             if (this.IsCorrectCoveragePercentageByCoveringType(policy))
             {
-                await this.RepositoryPolicy.UpdateOne(policy);
+                await this.RepositoryPolicy.InsertOne(policy);
                 return new Response(Message.SuccessGeneral, true);
             }
             else

@@ -4,9 +4,7 @@
     using MongoDB.Bson;
     using MongoDB.Driver;
     using MongoDB.Driver.Linq;
-    using System;
     using System.Collections.Generic;
-    using System.Linq.Expressions;
     using System.Threading.Tasks;
 
     public class MongoRepository<T> : IMongoRepository<T> where T : BaseEntity, new()
@@ -50,33 +48,13 @@
             ObjectId objectId = new ObjectId(id);
             return await this.Collection.Find(x => x._id.Equals(objectId)).SingleOrDefaultAsync();
         }
-
-        public async Task<IEnumerable<T>> GetMany(Expression<Func<T, bool>> expression)
-        {
-            return await this.Collection.Find(expression).ToListAsync();
-        }
-
-        public async Task<T> FindOneAndUpdate(Expression<Func<T, bool>> expression, UpdateDefinition<T> update, FindOneAndUpdateOptions<T> option)
-        {
-            return await this.Collection.FindOneAndUpdateAsync(expression, update, option);
-        }
-
-        public async Task UpdateOne(Expression<Func<T, bool>> expression, T update)
-        {
-            await this.Collection.ReplaceOneAsync(expression, update);
-        }
-
+        
         public async Task UpdateOne(T update)
         {
             ObjectId objectId = new ObjectId(update._id);
             await this.Collection.ReplaceOneAsync(x => x._id.Equals(objectId), update);
         }
-
-        public async Task DeleteOne(Expression<Func<T, bool>> expression)
-        {
-            await this.Collection.DeleteOneAsync(expression);
-        }
-
+        
         public async Task DeleteById(string id)
         {
             ObjectId objectId = new ObjectId(id);
@@ -87,12 +65,7 @@
                 throw new KeyNotFoundException("No se pudo eliminar el registro con id" + id);
             }
         }
-
-        public async Task InsertMany(IEnumerable<T> items)
-        {
-            await this.Collection.InsertManyAsync(items);
-        }
-
+        
         public async Task InsertOne(T item)
         {
             item._id = ObjectId.GenerateNewId().ToString();
@@ -101,7 +74,7 @@
 
         public async Task<IEnumerable<T>> GetAll()
         {
-            return await this.Collection.Find(x => 1 == 1).ToListAsync();
+            return await this.Collection.Find(x => true).ToListAsync();
         }
     }
 }
