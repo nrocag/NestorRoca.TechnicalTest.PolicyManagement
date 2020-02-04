@@ -36,7 +36,7 @@
         }
 
         /// <summary>
-        /// Proceso no fue exitoso.
+        /// Cuando es línea de riesgo alto, el porcentaje de cubrimiento no puede superar al 50%.
         /// </summary>
         public static Message CoveragePercentageByCoveringTypeIncorrect
         {
