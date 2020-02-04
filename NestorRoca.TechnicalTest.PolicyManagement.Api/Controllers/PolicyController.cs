@@ -37,7 +37,7 @@
             try
             {
                 Response response = await this.PolicyBussiness.GetAllPolicies();
-                action = response.ActionResponse.Success ? this.Ok(response) : (ActionResult)this.NotFound(response.ActionResponse.Message);
+                action = response.ActionResponse.Success ? this.Ok(response) : (ActionResult)this.NotFound(response);
             }
             catch (Exception ex)
             {
@@ -61,7 +61,7 @@
             try
             {
                 Response response = await this.PolicyBussiness.GetByIdPolicy(id);
-                action = response.ActionResponse.Success ? this.Ok(response) : (ActionResult)this.NotFound(response.ActionResponse.Message);
+                action = response.ActionResponse.Success ? this.Ok(response) : (ActionResult)this.NotFound(response);
             }
             catch (Exception ex)
             {
@@ -85,7 +85,7 @@
             try
             {
                 Response response = await this.PolicyBussiness.CreatePolicy(policy);
-                action = response.ActionResponse.Success ? this.Ok(response) : (ActionResult)this.BadRequest(response.ActionResponse.Message);
+                action = response.ActionResponse.Success ? this.Ok(response) : (ActionResult)this.BadRequest(response);
             }
             catch (Exception ex)
             {
@@ -109,7 +109,7 @@
             try
             {
                 Response response = await this.PolicyBussiness.UpdatePolicy(policy);
-                action = response.ActionResponse.Success ? this.Ok(response) : (ActionResult)this.BadRequest(response.ActionResponse.Message);
+                action = response.ActionResponse.Success ? this.Ok(response) : (ActionResult)this.BadRequest(response);
             }
             catch (Exception ex)
             {
@@ -133,7 +133,7 @@
             try
             {
                 Response response = await this.PolicyBussiness.DeletePolicy(id);
-                action = response.ActionResponse.Success ? this.Ok(response) : (ActionResult)this.BadRequest(response.ActionResponse.Message);
+                action = response.ActionResponse.Success ? this.Ok(response) : (ActionResult)this.BadRequest(response);
             }
             catch (Exception ex)
             {
