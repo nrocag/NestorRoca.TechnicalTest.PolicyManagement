@@ -4,9 +4,8 @@
     using System.Security.Authentication;
 
     internal static class MongoDbCosmosConnection
-    {
-        private static readonly string connectionString = @"mongodb://cosmodb-tests:a013ZLyCStwKuS3wVAFgaxHQWlhvPnx6Tu774PMGQqrl7VEnmGhfrRBIjafNcF5th2Gv5UqhZOoCGEAuDlZxLw==@cosmodb-tests.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
-
+    {   
+        private static readonly string connectionString = @"mongodb://cosmodb-tests:sTV5s7DSI72Ra8guY2WFqwfXeFGwbbesev8UKq5LrNnVHpDUvDZYr4zIIqn1w9cfcopJ8peaJBm6amW81fyqsA==@cosmodb-tests.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
         private static IMongoDatabase dataBase;
 
         public static IMongoDatabase DataBase
